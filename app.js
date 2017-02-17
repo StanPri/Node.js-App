@@ -6,7 +6,7 @@ const _ = require('lodash');
 let user = os.userInfo();
 let addition = math.add;
 
-console.log(`4 + (-1) = ${addition(4,-1)}`)
+console.log(`6 + (-1) = ${addition(6,-1)}`)
 
 
 
