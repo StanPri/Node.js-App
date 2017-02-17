@@ -1,6 +1,7 @@
 const fs = require('fs');
 const os = require('os');
 const math = require('./math');
+const _ = require('lodash');
 
 let user = os.userInfo();
 let addition = math.add;
