@@ -6,14 +6,10 @@ const _ = require('lodash');
 let user = os.userInfo();
 let addition = math.add;
 
-console.log(`6 + (-1) = ${addition(6,-1)}`)
+console.log("Starting app.js");
 
+let command =  process.argv[2];
 
-
-// fs.appendFile('file.txt', `Hello, ${user.username}. `, function(error)
-//   {
-//     if(error) {
-//       console.log('Unable to write the file');
-//     }
-//   }
-// );
+if (command === 'read') {
+  console.log('Command: read');
+}
