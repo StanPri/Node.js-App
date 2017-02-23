@@ -1,15 +1,20 @@
-const fs = require('fs');
-const os = require('os');
-const math = require('./math');
+const commands = require('./commands');
 const _ = require('lodash');
-
-let user = os.userInfo();
-let addition = math.add;
+const yargs = require('yargs');
 
 console.log("Starting app.js");
 
-let command =  process.argv[2];
+const argv = yargs.argv;
+let argument = argv._[0];
 
-if (command === 'read') {
-  console.log('Command: read');
+if(argument == 'add') {
+  commands.addCommand(argv.title, argv.body);
+} else if (argument == 'list') {
+  commands.getAll();
+} else if (argument == 'read') {
+  commands.getCommand(argv.title);
+} else if (argument == 'remove') {
+  commands.removeCommand(argv.title);
+} else {
+  console.log("Argument not recognized");
 }

@@ -18,5 +18,6 @@
   "homepage": "https://github.com/StanPri/Node.js-App#readme",
   "dependencies": {
     "jspdf": "^1.3.2",
+    "yargs": "*"
   }
 }
