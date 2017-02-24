@@ -3,7 +3,7 @@ console.log(`Starting commands`);
 let addCommand = (title, body) => {
   console.log(`AddCommand --> Title!: ${title} Body!: ${body}`);
 };
-let getAll = () => {
+let getAllCommands = () => {
   console.log("getAll --> ");
 };
 let getCommand = (title) => {
@@ -15,7 +15,7 @@ let removeCommand = (title) => {
 
 module.exports =  {
   addCommand,
-  getAll,
+  getAllCommands,
   getCommand,
   removeCommand
 };
