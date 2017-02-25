@@ -9,19 +9,6 @@ const argv = yargs.argv;
 let argument = argv._[0];
 
 
-//Saving orignalCommand and reading it
-
-let originalCommand = {
-  title: 'originalCommand',
-  body: 'Do this & that'
-}
-
-readWriteFile(originalCommand);
-
-//END Saving orignalCommand and reading it
-
-
-
 if(argument == 'add') {
   commands.addCommand(argv.title, argv.body);
 } else if (argument == 'list') {
