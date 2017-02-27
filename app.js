@@ -10,11 +10,14 @@ let argument = argv._[0];
 
 
 if(argument == 'add') {
-  commands.addCommand(argv.title, argv.body);
+  let result = commands.addCommand(argv.title, argv.body);
+  console.log(`(Add command): ${JSON.stringify(result)}`);
 } else if (argument == 'list') {
-  commands.getAllCommands();
+  let result = commands.getAllCommands();
+  console.log(`(List command): ${JSON.stringify(result)}`);
 } else if (argument == 'read') {
-  commands.getCommand(argv.title);
+  let result = commands.getCommand(argv.title);
+  console.log(`(Read command): ${JSON.stringify(result)}`);
 } else if (argument == 'remove') {
   commands.removeCommand(argv.title);
 } else {
