@@ -1,7 +1,6 @@
 const commands = require('./commands');
 const _ = require('lodash');
 const yargs = require('yargs');
-const {readWriteFile} = require('./readWriteFile');
 
 console.log("Starting app.js");
 
