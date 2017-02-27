@@ -1,10 +1,9 @@
 const fs = require('fs');
 console.log(`Starting commands`);
 
-let fetchCommand = (title) => {
+let fetchCommands = (title) => {
   try {
     let commandRead = fs.readFileSync('commandsFile.json');
-    console.log(title);
     if (typeof(title) != "undefined")
     {
         return JSON.parse(commandRead).filter((command) => command.title === title);
@@ -40,20 +39,25 @@ let addCommand = (title, body) => {
   };
 
   //Read Existing
-  commands = fetchCommand();
+  commands = fetchCommands();
 
   //Save Command
   return saveCommand(commands, command, title);
 
 };
 let getAllCommands = () => {
-  return fetchCommand();
+  return fetchCommands();
 };
 let getCommand = (title) => {
-  return fetchCommand(title);
+  return fetchCommands(title);
 };
 let removeCommand = (title) => {
-  console.log("removeCommand --> ", title);
+  commands = fetchCommands();
+  filteredCommands = commands.filter((command) => command.title !== title);
+  fs.writeFileSync('commandsFile.json', JSON.stringify(filteredCommands));
+  (commands.length === filteredCommands.length) ? console.log("Command not removed.") : console.log("Command removed successfully!");
+
+  return filteredCommands;
 };
 
 module.exports =  {

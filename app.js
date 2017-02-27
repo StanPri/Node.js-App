@@ -19,7 +19,8 @@ if(argument == 'add') {
   let result = commands.getCommand(argv.title);
   console.log(`(Read command): ${JSON.stringify(result)}`);
 } else if (argument == 'remove') {
-  commands.removeCommand(argv.title);
+  let result = commands.removeCommand(argv.title);
+  console.log(`(Remove command): ${JSON.stringify(result)}`);
 } else {
   console.log("Argument not recognized");
 }
