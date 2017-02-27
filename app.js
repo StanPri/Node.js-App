@@ -5,10 +5,37 @@ const {readWriteFile} = require('./readWriteFile');
 
 console.log("Starting app.js");
 
-const argv = yargs.argv;
+//Objects for Yargs
+titleOptions = {
+  describe: 'Title of a command',
+  demand: true,
+  alias: 't'
+};
+
+bodyOptions = {
+  describe: 'Description of new command',
+  demand: true,
+  alias: 'b'
+}
+
+//Yargs Advanced options
+const argv = yargs
+  .command( 'add', 'Add a new command',
+    { title: titleOptions, body: bodyOptions }
+  )
+  .command('list', 'List all command')
+  .command('read', 'Read a particular command',
+    { title: titleOptions }
+  )
+  .command('remove', 'Remove particular command',
+    { title: titleOptions }
+  )
+  .help().argv;
+
+//User Input
 let argument = argv._[0];
 
-
+//Command options
 if(argument == 'add') {
   let result = commands.addCommand(argv.title, argv.body);
   console.log(`(Add command): ${JSON.stringify(result)}`);
