@@ -1,23 +1,26 @@
 const express = require('express');
-
+const hbs = require('hbs');
 let app = express();
 let errorMessage = { errorMessage: "Unable to to handle request"};
+
+app.set('view engine', 'hbs');
 
 app.use(express.static(__dirname + "/public"));
 
 app.get('/', (req, res) => {
-  res.send({
-    name: 'Stan',
-    likes: [
-        'Hiking',
-        'Praying'
-    ]
+  res.render('index.hbs', {
+    pageTitle: 'Home Page',
+    currentYear: new Date().getFullYear(),
+    message: "Welcome to this amazing website"
   });
 });
 
 
 app.get('/about', (req, res) =>{
-  res.send('About page');
+  res.render('about.hbs', {
+    pageTitle: 'About Page',
+    currentYear: new Date().getFullYear()
+  });
 });
 
 app.get('/bad', (req, res) => {
