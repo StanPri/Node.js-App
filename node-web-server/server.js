@@ -7,6 +7,21 @@ let errorMessage = { errorMessage: "Unable to to handle request"};
 
 app.use(express.static(__dirname + "/public"));
 
+app.use((req, res, next) => {
+  var now = new Date().toString();
+  var log = `${now}: ${req.method} ${req.url}`;
+
+  console.log(log);
+  next();
+});
+
+app.use((req, res, next) => {
+  res.render('maintenance.hbs', {
+    pageTitle: 'Something went wrong',
+    message: 'Please contact web support (ha! It\'s me!).'
+  })
+});
+
 hbs.registerPartials(__dirname + "/views/partials");
 app.set('view engine', 'hbs');
 
