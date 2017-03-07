@@ -4,6 +4,9 @@ let app = express();
 let errorMessage = { errorMessage: "Unable to to handle request"};
 
 
+const port = process.env.PORT || 3000;
+
+
 
 app.use(express.static(__dirname + "/public"));
 
@@ -15,12 +18,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  res.render('maintenance.hbs', {
-    pageTitle: 'Something went wrong',
-    message: 'Please contact web support (ha! It\'s me!).'
-  })
-});
+// app.use((req, res, next) => {
+//   res.render('maintenance.hbs', {
+//     pageTitle: 'The middleware has worked',
+//     message: 'Please contact web support (ha! It\'s me!).'
+//   });
+//   next();
+// });
 
 hbs.registerPartials(__dirname + "/views/partials");
 app.set('view engine', 'hbs');
@@ -52,6 +56,6 @@ app.get('/bad', (req, res) => {
 });
 
 
-app.listen(3000, () => {
-  console.log('Server is up on port 3000');
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);
 });

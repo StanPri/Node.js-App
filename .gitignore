@@ -55,6 +55,7 @@ Temporary Items
 
 # App Directories
 node_modules/
+node-web-server/node_modules
 dist/
 
 # Debug files
