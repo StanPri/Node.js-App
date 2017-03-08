@@ -18,6 +18,7 @@ app.use((req, res, next) => {
   next();
 });
 
+//Middleware
 // app.use((req, res, next) => {
 //   res.render('maintenance.hbs', {
 //     pageTitle: 'The middleware has worked',
@@ -53,6 +54,13 @@ app.get('/about', (req, res) =>{
 
 app.get('/bad', (req, res) => {
   res.send(errorMessage)
+});
+
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Projects',
+    message: "The list of my previous, current, and future projects. Will be updated"
+  });
 });
 
 
