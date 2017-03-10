@@ -8,11 +8,24 @@ it('should add two numbers', () => {
   expect(res).toBe(30).toBeA('number');
 });
 
-it ('should square numbers', () => {
-  var res = utils.square(6);
+it ('should async square numbers', (done) => {
+  utils.square(6, (square) => {
+    expect(square).toBe(36).toBeA('number');
+    done();
+  });
 
-  expect(res).toBe(36).toBeA('number');
+
 });
+
+
+//Async test with 'done'
+it('should async add two numbers', (done) => {
+  utils.asyncAdd(4, 3, (sum) => {
+      expect(sum).toBe(7).toBeA('number');
+      done();
+  })
+});
+
 
 it('should be the same', () => {
   expect({name: 'Stan'}).toEqual({name:'Stan'});
@@ -27,4 +40,4 @@ it('should set first and last names are set', () => {
   let res = utils.setName(user, "Stan Pri");
 
   expect(res).toInclude({firstName: 'Stan', lastName: "Pri"});
-})
+});
