@@ -4,26 +4,48 @@ mongoose.Promise = global.Promise; //Set up third-party library
 
 mongoose.connect('mongodb://localhost:27017/TodoApp');
 
-let Todo = mongoose.model('Todo', {
-  text: {
-    type: String
-  },
-  completed: {
-    type: Boolean
-  },
-  completedAt: {
-    type: Number
+// let Todo = mongoose.model('Todo', {
+//   text: {
+//     type: String,
+//     required: true,
+//     minlength: 1,
+//     trim: true
+//   },
+//   completed: {
+//     type: Boolean,
+//     default: false
+//   },
+//   completedAt: {
+//     type: Number,
+//     defualt: null
+//   }
+// });
+//
+// let newTodo = new Todo({
+//   text: "  Cook   ",
+// });
+//
+// newTodo.save().then((doc) => {
+//   console.log('Save todo', doc);
+// }, (e) => {
+//   console.log('Unable to save todo');
+// });
+
+let User = mongoose.model('User', {
+  email: {
+    type: String,
+    required: true,
+    trim: true,
+    minlength: 1
   }
 });
 
-let newTodo = new Todo({
-  text: "Kill the mockingbird",
-  completed: false,
-  completedAt: 60
+let newUser = new User({
+  email: "example@mail.com"
 });
 
-newTodo.save().then((doc) => {
-  console.log('Save todo', doc)
+newUser.save().then((doc) => {
+  console.log('Save todo', doc);
 }, (e) => {
-  console.log('Unable to save todo');
+  console.log('Can\'t save it', e);
 });
