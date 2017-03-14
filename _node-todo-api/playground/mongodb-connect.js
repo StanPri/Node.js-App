@@ -8,12 +8,11 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err,  db) => {
 
 
   db.collection('Users').insertOne({
-    name: 'Maxim',
-    age: 25,
-    location: 'California, US'
+    name: 'Victor',
+    age: 25
   }, (err, result) => {
     if(err) {
-      return console.log('Unable to insert Users', err);
+      return console.log('Unable to insert', err);
     }
 
     console.log(JSON.stringify(result.ops, undefined, 2));
